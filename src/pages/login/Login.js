@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CustomeInput from "../../components/customInput/CustomeInput";
 import { Link } from "react-router-dom";
+import { signInUser } from "../../user/Users";
 
 const Login = () => {
   //   const [isChecked, setChecked] = useState(false);
@@ -35,6 +36,9 @@ const Login = () => {
   const handleOnSubmit = (e) => {
     console.log(form);
     e.preventDefault();
+    // console.log(form.email, form.password);
+    const { email, password } = form;
+    signInUser(email, password);
   };
   const inputField = [
     // { htmlFor: "email", className: "text-sm font-medium" },

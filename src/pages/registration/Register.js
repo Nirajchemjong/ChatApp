@@ -2,6 +2,8 @@ import "./Reg.css";
 import React, { useState } from "react";
 import CustomeInput from "../../components/customInput/CustomeInput";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { createNewUser } from "../../user/Users";
 
 const Register = () => {
   const [form, setForm] = useState();
@@ -16,6 +18,14 @@ const Register = () => {
   };
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    const { cpassword, ...rest } = form;
+    if (form.password !== cpassword) {
+      // toast.success("pw matched");
+      toast.error("Your password didn't match");
+    }
+    // signInUser(form.email, form.password);
+    // console.log({ ...form });
+    createNewUser(rest);
     console.log(form);
   };
   const inputField = [
